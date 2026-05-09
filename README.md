@@ -14,6 +14,8 @@ Key Quotes from [Julia Roberts](https://en.wikipedia.org/wiki/Julia_Roberts) abo
 
 That's astonishingly impressive!
 
+Coding duplicates the ideas of playing Mahjong, doesn't it?
+
 
 
 ## Project
@@ -26,9 +28,9 @@ That's astonishingly impressive!
 
 ## Blow Your Mind: OpenCode+Ollama
 
-1- [Blow Your Mind - OpenCode with Ollama+Gemma4 in WSL2](./Blow Your Mind - OpenCode with Ollama+Gemma4 in WSL2.md)
+1- [Blow Your Mind - OpenCode with Ollama+Gemma4 in WSL2](./Blow-Your-Mind-OpenCode-with-Ollama+Gemma4-in-WSL2.md)
 
-2- [Blow Your Mind - OpenCode or Claude Code with Ollama+Gemma4 Makes Token-free](./Blow Your Mind - OpenCode or Claude Code with Ollama+Gemma4 Makes Token-free.md)
+2- [Blow Your Mind - OpenCode or Claude Code with Ollama+Gemma4 Makes Token-free](./Blow-Your-Mind-OpenCode-or-ClaudeCode-with-Ollama+Gemma4-Makes-Token-free.md)
 
 
 
