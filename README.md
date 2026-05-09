@@ -36,9 +36,9 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 ## Blow Your Mind: Claude Code + Ollama
 
-1- [Blow Your Mind - Claude Code Installation Guide](./Blow Your Mind - Claude Code Installation Guide.md)
+1- [Blow Your Mind - Claude Code Installation Guide](./Blow-Your-Mind-ClaudeCode-Installation-Guide.md)
 
-2- [Blow Your Mind - Claude Code with Local & Cloud Models in 5 Minutes](./Blow Your Mind - Claude Code with Local & Cloud Models in 5 Minutes.md) from https://medium.com
+2- [Blow Your Mind - Claude Code with Local & Cloud Models in 5 Minutes](./Blow-Your-Mind-ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
 
 
 
