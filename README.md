@@ -40,7 +40,7 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 2- [Claude Code with Local & Cloud Models in 5 Minutes](./ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
 
-3- [Claude Code with Gemma4 local model on Mac](./ClaudeCode-with-Gemma4-local-model-on-Mac.md)
+3- [Claude Code with Local Gemma4 Model on Mac](./ClaudeCode-with-local-Gemma4-on-Mac.md)
 
 
 
