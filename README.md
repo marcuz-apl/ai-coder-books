@@ -26,19 +26,21 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 
 
-## Blow Your Mind: OpenCode+Ollama
+## OpenCode
 
-1- [Blow Your Mind - OpenCode with Ollama+Gemma4 in WSL2](./Blow-Your-Mind-OpenCode-with-Ollama+Gemma4-in-WSL2.md)
+1- [OpenCode with Ollama+Gemma4 in WSL2](./OpenCode-with-Ollama+Gemma4-in-WSL2.md)
 
-2- [Blow Your Mind - OpenCode or Claude Code with Ollama+Gemma4 Makes Token-free](./Blow-Your-Mind-OpenCode-or-ClaudeCode-with-Ollama+Gemma4-Makes-Token-free.md)
+2- [ OpenCode or Claude Code with Ollama+Gemma4 Makes Token-free](./OpenCode-or-ClaudeCode-with-Ollama+Gemma4-Makes-Token-free.md)
 
 
 
-## Blow Your Mind: Claude Code + Ollama
+## Claude Code
 
-1- [Blow Your Mind - Claude Code Installation Guide](./Blow-Your-Mind-ClaudeCode-Installation-Guide.md)
+1- [Claude Code Installation Guide](./ClaudeCode-Installation-Guide.md)
 
-2- [Blow Your Mind - Claude Code with Local & Cloud Models in 5 Minutes](./Blow-Your-Mind-ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
+2- [Claude Code with Local & Cloud Models in 5 Minutes](./ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
+
+3- [Claude Code with Gemma4 local model on Mac](./ClaudeCode-with-Gemma4-local-model-on-Mac.md)
 
 
 
@@ -52,3 +54,4 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 ## The End
 
+ClaudeCode-with-Gemma4-local-model-on-Mac
