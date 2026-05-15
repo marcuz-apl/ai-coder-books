@@ -36,7 +36,7 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 ## Claude Code
 
-1- [Claude Code Installation Guide](./ClaudeCode-Installation-Guide.md)
+1- [Claude Code and Ollama with Local Models on Windows](./ClaudeCode-Ollama-with-Local-Models-on-Windows.md)
 
 2- [Claude Code and LM Studio with Local Gemma4 Model on Mac and Linux](./ClaudeCode-LMStudio-with-Local-Gemma4-on-Mac-Linux.md)
 
