@@ -1,4 +1,4 @@
-# Blow Your Mind: Claude Code - Install Guide
+# Claude Code - Install Guide in Windows
 
 by Marcus Zou | 20 April 2026 | Source: https://claude.ai
 
@@ -14,49 +14,7 @@ The best AI Agent framework is Claude Code by far.
 
 
 
-## Scenarios
-
-- Mac or Windows
-- With Magic or Plain Internet
-
-
-
-## Step 1 - Install Claude Code framework
-
-**macOS - install with bash**
-
-Open terminal and type:
-
-```shell
-curl -fsSL https://claude.ai/install.sh | bash
-```
-
-It may prompt to add the PATH, please do so using `echo` command.
-
-Verify: type in -
-
-```shell
-claude --version
-## shall be version number
-```
-
-**macOS - brew it**
-
-use `homebrew` to install:
-
-```shell
-# Install Homebrew
-/bin/bash -c "(curl -fsSL https://raw.hithubusercontent.com/Homebrew/install.sh/HEAD/install.sh)"
-```
-
-use Homebrew to install Claude Code:
-
-```shell
-brew install --cask claude-code@latest
-claude --version
-```
-
-
+## Step 1 - Install Claude Code
 
 **Windows - Install with PowerShell**
 
@@ -79,6 +37,13 @@ winget install Anthropic.ClaudeCode
 ```
 
 In whatever case, you have to get Claude verified.
+
+Verify: type in -
+
+```shell
+claude --version
+## shall be version number
+```
 
 
 

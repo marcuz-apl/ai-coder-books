@@ -38,9 +38,11 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 1- [Claude Code Installation Guide](./ClaudeCode-Installation-Guide.md)
 
-2- [Claude Code with Local & Cloud Models in 5 Minutes](./ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
+2- [Claude Code and LM Studio with Local Gemma4 Model on Mac and Linux](./ClaudeCode-LMStudio-with-Local-Gemma4-on-Mac-Linux.md)
 
-3- [Claude Code with Local Gemma4 Model on Mac](./ClaudeCode-with-local-Gemma4-on-Mac.md)
+3- [Claude Code with Local & Cloud Models in 5 Minutes](./ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
+
+
 
 
 
