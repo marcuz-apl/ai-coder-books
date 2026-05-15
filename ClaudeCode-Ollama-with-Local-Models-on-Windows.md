@@ -194,7 +194,37 @@ With CLAUDE.md, the Claude Code will know your needs deeply, working as collabor
 
 **Project CLAUDE.md**: located at the root directory of each project; effective only when the project is loaded. This md file doesn't need your effort, because when you chat with Claude Code, it will draft one for you.
 
+Here is my example CLAUDE.md
 
+```markdown
+# Project Guidelines
+
+## Tech Stack
+- Frontend: Next.js 14, TypeScript, Tailwind CSS
+- Database: PostgreSQL with Prisma ORM
+
+## Coding Conventions
+- Use `const` over `let`. Never use `var`.
+- Use named exports.
+- File names: kebab-case for components, camelCase for utilities.
+
+## Rules
+- DO NOT add new npm packages without asking.
+- RUN `npm run test` before committing changes.
+
+## Commands
+- Dev server: `npm run dev`
+- Tests: `npm run test`
+
+```
+
+#### Best Practices
+
+- **Be Specific:** Instead of "write clean code," write "use JSDoc for all public functions".
+- **Use Progressive Disclosure:** For large projects, don't put everything in one file. Mention other docs, such as `See @README.md for project overview`.
+- **Keep it Current:** If you notice Claude making the same mistake repeatedly, add a rule to the `CLAUDE.md` file to prevent it.
+- **Use `CLAUDE.local.md`:** For personal preferences that shouldn't be shared with your team via git, create a `CLAUDE.local.md` file and add it to your `.gitignore`.
+- **Use Hierarchy:** You can add `CLAUDE.md` files in subdirectories for rules specific to that folder
 
 ## Coding Challenge: a Dinosaur Game
 

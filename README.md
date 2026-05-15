@@ -42,7 +42,7 @@ Coding duplicates the ideas of playing Mahjong, doesn't it?
 
 3- [Claude Code with Local & Cloud Models in 5 Minutes](./ClaudeCode-with-Local-&-Cloud-Models-in-5-Minutes.md) from https://medium.com
 
-
+4- [Claude Code + OpenRouter Make Free Coding Plan Forever](./ClaudeCode-OpenRouter-Make-Free-Coding-Plan-Forever.md)
 
 
 
