@@ -31,9 +31,7 @@ claude -v
 
 Go to https://openrouter.ai to register a free account;
 
-Then create an API Key and note down:
-
-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
+Then create an API Key and note down it.
 
 
 
