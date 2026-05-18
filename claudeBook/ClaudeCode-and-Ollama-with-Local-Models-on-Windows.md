@@ -1,4 +1,4 @@
-# Claude Code - Ollama with Local Models in Windows
+# Claude Code and Ollama with Local Models in Windows
 
 by Marcus Zou | 20 April 2026 | Source: https://claude.ai
 
@@ -14,42 +14,44 @@ The best AI Agent framework is Claude Code by far.
 
 
 
-## Step 1 - Install Claude Code
+## Step 1 - Install Claude Code in Windows
 
-**Windows - Install with PowerShell**
 
-Pre-install Git first:
+
+**Pre-requisite**: Install **Git**:
 
 ```powershell
 winget install git.git
 ```
 
-Then install Claude Code:
 
-```shell
+
+Install **Claude Code** via **PowerShell**:
+
+```powershell
 irm https://claude.ai/install.ps1 | iex
 ```
 
-**Windows - Install with winget**
+Or Install it via **winget**:
 
-```shell
+```powershell
 winget install Anthropic.ClaudeCode
 ```
 
-In whatever case, you have to get Claude verified.
-
-Verify: type in -
+Verify the version number:
 
 ```shell
 claude --version
-## shall be version number
+## 2.1.136 (Claude Code)
 ```
 
 
 
-## Step 2 - Install Ollama on Windows
+## Step 2 - Install Ollama in Windows
 
-Very easy to use PowerShell:
+
+
+Very easy to install Ollama within PowerShell:
 
 ```powershell
 # install
@@ -63,13 +65,16 @@ Go to https://ollama.com/search to take a look at those models, all free.
 Then pull down some models:
 
 ```powershell
-ollama pull qwen3.6:latest			## 23 GB
-ollama pull qwen3-coder:30b			## 18 GB
-ollama pull qwen3-coder:480b-cloud	## - 
-ollama pull gemma4:31b				## 19 GB
-ollama pull gemma4:31b-cloud		## 19 GB
-ollama pull codellama:13b			## 7.4 GB
-ollama pull codellama:34b			## 19 GB
+## ------- Google Family ---------
+ollama pull gemma4:31b				## 19 GB  256K		Text,Image
+ollama pull gemma4:31b-cloud		## -----  256k		Text,Image
+## ------- Alibaba Family --------
+ollama pull qwen3.6:35b				## 23 GB  256K		Text,Image
+ollama pull qwen3-coder:30b			## 19 GB  256K		Text
+ollama pull qwen3-coder:480b-cloud	## -----  256K		Text
+## ------- Deepseek Family -------
+ollama pull deepseek-v4-pro:cloud	## -----  1M		Text
+ollama pull deepseek-v4-flash:cloud	## -----  1M		Text
 ```
 
 Give a try:
@@ -78,11 +83,13 @@ Give a try:
 ollama run gemma4:31b
 ```
 
-Ollama server is served at http://localhost:11343/v1
+Ollama server is served at http://localhost:11434
 
 
 
-## Step 2B - Alternatively Install CC Switch
+## Step 2B - Optionally Install CC Switch
+
+
 
 China AI Models are very powerful as well, say GLM-5.1, which is very close to Claude Opus 4.6; If no GLM coding plan, MiniMax M2.7 and Kimi K2.5 are also very great.
 
@@ -101,7 +108,7 @@ Go to https://github.com/farion1231/cc-switch/releases to download the installer
 
 **Configure CC-Switch**
 
-Open CC Switch, click "Claude" column, Add new model, fill in:
+Open CC Switch, click "**Claude**" column, Add new model, fill in:
 
 - API Key
 - Select your model
@@ -111,6 +118,8 @@ Open CC Switch, click "Claude" column, Add new model, fill in:
 
 ## Step 3 - Configure and Spin up Claude Code
 
+
+
 Set Environment Variables for Claude Code in PowerShell:
 
 ```powershell
@@ -118,6 +127,8 @@ $env:ANTHROPIC_BASE_URL="http://localhost:11434"
 $env:ANTHROPIC_AUTH_TOKEN="ollama"
 $env:ANTHROPIC_API_KEY=""
 ```
+
+**Note: Please do not set both AUTH_TOKEN and API_KEY! Leave one null.**
 
 Or add 3 lines into the config file: `~/.claude/settings.json`:
 
@@ -141,6 +152,12 @@ The contents belike:
 }
 ```
 
+**Note: Close the PowerShell and open it again.**
+
+
+
+## Step 4 - Launch Claude Code
+
 
 
 **In case of you prefer Anthropic Cloud-based model**
@@ -152,19 +169,19 @@ cd claudeDemo
 claude init
 ```
 
-As such you will be diverted to selecting the official model of Anthropic, instead of the local ones. 
+As such you will be diverted to **selecting the official model of Anthropic**, instead of the local ones. 
 
 They are expensive, but very deserved.
 
 
 
+**In case of using local models**
+
 Go into the Project folder and Run command from Terminal:
 
 ```shell
-mkdir claudeDemo
 cd claudeDemo
-
-claude --model qwen3.6
+claude --model qwen3.6:35b
 ```
 
 When Developing something, use this code below will save your day quite a bit, trust me.
@@ -178,7 +195,7 @@ ollama launch claude
 
 
 
-## Step 4 - Write your CLAUDE.md
+## Step 5 - Write your CLAUDE.md
 
 This step is very critical.
 
@@ -215,7 +232,6 @@ Here is my example CLAUDE.md
 ## Commands
 - Dev server: `npm run dev`
 - Tests: `npm run test`
-
 ```
 
 #### Best Practices
@@ -226,15 +242,17 @@ Here is my example CLAUDE.md
 - **Use `CLAUDE.local.md`:** For personal preferences that shouldn't be shared with your team via git, create a `CLAUDE.local.md` file and add it to your `.gitignore`.
 - **Use Hierarchy:** You can add `CLAUDE.md` files in subdirectories for rules specific to that folder
 
-## Coding Challenge: a Dinosaur Game
+
+
+## Step 6 - Coding Challenge: a Dinosaur Game
 
 ```text
-Please use HTML_JavaScript to make Chrome-based offline dinosaur game in a single index.html file, Using space bar to jump, on a land with cactus barrier; starting from left side; It changes to Game-over if hitting a barrier, after which, score shall be displayed, plus a Restart button pops up; The display shall be in beautiful pixels.
+Please use HTML+JavaScript to make Chrome-based offline dinosaur game in a single index.html file, Using space bar to jump, the dinosaur is on a land with cactus barriers; starting from left side; It changes to Game-over if hitting a barrier, after which, score shall be displayed, and a Restart button pops up; The display shall be in beautiful pixels.
 ```
 
 
 
-## Benchamark Models
+## Step 7 - Benchmark Models
 
 If installing models with Ollama, we can use `ollama-benchmark` to monitor the token per second.
 

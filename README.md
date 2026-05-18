@@ -62,11 +62,11 @@ Instead of using one model for everything, most professional setups—such as th
 
 1- alfazen.org migration from https://soloist.ai/alfazeninc
 
-2- WebApp: PetroNix - ResvFacts
+2- WebApp: PetroNix - ReserVission
 
-3- WebApp: PetroNix - LogFacts
+3- WebApp: PetroNix - LogArena
 
-4- WebApp: PetroNix - ProdFacts
+4- WebApp: PetroNix - ProdoMain
 
 
 

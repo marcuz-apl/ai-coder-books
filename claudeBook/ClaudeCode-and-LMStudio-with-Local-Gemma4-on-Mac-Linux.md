@@ -1,4 +1,4 @@
-## Claude Code + LM Studio + Gemma4 Local Model on Mac/Linux
+# Claude Code + LM Studio + Gemma4 Local Model on Mac/Linux
 
 Marcus Zou | 12 May 2026
 
@@ -70,8 +70,8 @@ lms status
 
 ```shell
 export ANTHROPIC_BASE_URL=http://localhost:1234
-export ANTHROPIC_API_Key=lmstudio
 export ANTHROPIC_AUTH_TOKEN=lmstudio
+# export ANTHROPIC_API_Key=lmstudio
 ```
 
 The settings above is valid for current Terminal session only.
@@ -163,6 +163,16 @@ I renamed the `intex.html` to `./claudeDemo/dino-game-gemma4.html`, it's not pla
 I downloaded Codex using GPT 5.5 to build the same dinosaur game and it turns out this version dino game is totally playable. Then GPT 5.5 KO Gemma4 in terms of vibe coding domain.
 
 Here is the `./claudeDemo/dino-game-codex-gpt55.html`, go take a look.
+
+```shell
+## macOS
+open ./claudeDemo/dino-game-codex-gpt55.html
+## Linux
+## apt install xdg-utils
+xdg-open ./claudeDemo/dino-game-codex-gpt55.html
+```
+
+
 
 
 
