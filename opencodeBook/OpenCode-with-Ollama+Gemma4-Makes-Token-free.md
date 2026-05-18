@@ -1,4 +1,4 @@
-# Blow Your Mind: OpenCode or Claude Code with Ollama+Gemma4 Makes Token-Free
+# OpenCode with Ollama+Gemma4 Makes Token-Free
 
  
 
@@ -175,15 +175,7 @@ Launch VS-Code, create/select an empty folder, open Terminal and type the below 
 ollama launch opencode --model gemma4:31b-cloud
 ```
 
-Or launch `Claude Code` by:
-
-```shell
-ollama launch claude --model gemma4:31b-cloud
-```
-
 At `Security Guide`, select `1. Yes, I trust folder`.
-
-
 
 
 

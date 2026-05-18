@@ -75,10 +75,6 @@ ollama pull devstral-small-2
 
 Press enter or click to view image in full size
 
-![img](./assets/1TtNDWWBiR4xJH5cxtZrkkA.png)
-
-Press enter or click to view image in full size
-
 ![img](./assets/20260509-001.png)
 
 devstral-small-2 and glm-4.7-flash:bf16
