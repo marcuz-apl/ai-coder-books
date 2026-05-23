@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Dino Run</title>
+<style>
+@font-face {
+  font-family: 'pixel';
+  src: local('Courier New'), local('monospace');
+}
+body {
+  margin:0; padding:0;
+  display:flex; justify-content:center; align-items:center;
+  height:100vh;
+  background:#f7f7f7;
+  user-select:none;
+  font-family:'pixel',monospace;
+}
+#wrap {
+  position:relative;
+  background:#fff;
+  box-shadow:0 0 30px rgba(0,0,0,0.08);
+  image-rendering:pixelated;
+}
+canvas {
+  display:block;
+  background:#fff;
+}
+#overlay {
+  position:absolute; top:0; left:0;
+  width:100%; height:100%;
+  display:none;
+  flex-direction:column;
+  justify-content:center; align-items:center;
+  background:rgba(255,255,255,0.75);
+}
+#overlay .title {
+  font-size:22px; color:#555; margin-bottom:14px; letter-spacing:3px;
+}
+#overlay .finalscore {
+  font-size:14px; color:#888; margin-bottom:22px;
+}
+#restart {
+  padding:12px 28px; background:#555; color:#fff;
+  border:none; cursor:pointer;
+  font:14px 'pixel',monospace;
+  letter-spacing:1px;
+}
+#restart:active { transform:scale(.94); }
+#hud {
+  position:absolute; top:16px; right:20px;
+  font-size:15px; color:#555; letter-spacing:2px;
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c" width="800" height="250"></canvas>
+  <div id="hud">00000</div>
+  <div id="overlay">
+    <div class="title">G A M E &nbsp; O V E R</div>
+    <div class="finalscore">SCORE: 00000</div>
+    <button id="restart">RESTART</button>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const overlay = document.getElementById('overlay');
+const hud = document.getElementById('hud');
+const finalscore = document.querySelector('.finalscore');
+const restartBtn = document.getElementById('restart');
+
+const GRAVITY = 0.55;
+const JUMP_VEL = -11.5;
+const GROUND = 195;
+const P = 4; // pixel size
+
+// ── Pixel art data ──────────────────────────────────────────
+// Dino  (columns 13, rows 14)
+const DINO_RUN1 = [
+  "       RRRR",
+  "       RRRRRR",
+  "       RRRRRR",
+  "      RRRRRRR",
+  "      RRRRRR ",
+  "RR   RRRRR  ",
+  "R    RRRRR  ",
+  "R   RRRRRR  ",
+  "RRRRRRRRR   ",
+  " RRRRRRRR   ",
+  "  RRRRRR    ",
+  "   R   R    ",
+  "   R   R    ",
+  "  RR   RR   "
+];
+const DINO_RUN2 = [
+  "       RRRR",
+  "       RRRRRR",
+  "       RRRRRR",
+  "      RRRRRRR",
+  "      RRRRRR ",
+  "RR   RRRRR  ",
+  "R    RRRRR  ",
+  "R   RRRRRR  ",
+  "RRRRRRRRR   ",
+  " RRRRRRRR   ",
+  "  RRRRRR    ",
+  "   R   R    ",
+  "   RR   RR  ",
+  "  RR    RR  "
+];
+const DINO_JUMP = [
+  "       RRRR",
+  "       RRRRRR",
+  "       RRRRRR",
+  "      RRRRRRR",
+  "      RRRRRR ",
+  "RR   RRRRR  ",
+  "R    RRRRR  ",
+  "R   RRRRRR  ",
+  "RRRRRRRRR   ",
+  " RRRRRRRR   ",
+  "  RRRRRR    ",
+  "   R   R    ",
+  "   R   R    ",
+  "   R   R    "
+];
+
+// Cacti
+const CACTUS_SM = [ // 5 rows x 5 cols
+  "  G  ",
+  "  G  ",
+  "GGGGG",
+  "GGGGG",
+  "  G  ",
+  "  G  "
+];
+const CACTUS_TALL = [ // 8 rows x 5 cols
+  "  G  ",
+  "  G  ",
+  "  G  ",
+  "GGGGG",
+  "GGGGG",
+  "  G  ",
+  "  G  ",
+  "  G  "
+];
+const CACTUS_WIDE = [ // 5 rows x 7 cols
+  "  GGG  ",
+  "GGGGGGG",
+  "GGGGGGG",
+  "  GGG  ",
+  "  GGG  "
+];
+
+const DINO_COLOR = '#555';
+const CACTUS_COLOR = '#555';
+const GROUND_COLOR = '#555';
+
+// ── Helpers ─────────────────────────────────────────────────
+function drawSprite(data, x, y, color) {
+  ctx.fillStyle = color;
+  for (let r = 0; r < data.length; r++) {
+    const row = data[r];
+    for (let c = 0; c < row.length; c++) {
+      if (row[c] !== ' ') {
+        ctx.fillRect(x + c*P, y + r*P, P, P);
+      }
+    }
+  }
+}
+
+function spriteW(data) { return data[0].length * P; }
+function spriteH(data) { return data.length * P; }
+
+// ── Dino ────────────────────────────────────────────────────
+class Dino {
+  constructor() {
+    this.x = 60;
+    this.baseY = GROUND - spriteH(DINO_RUN1);
+    this.y = this.baseY;
+    this.vy = 0;
+    this.jumping = false;
+    this.frame = 0;
+    this.tick = 0;
+  }
+
+  get data() {
+    if (this.jumping) return DINO_JUMP;
+    return (this.frame < 5) ? DINO_RUN1 : DINO_RUN2;
+  }
+
+  get w() { return spriteW(this.data); }
+  get h() { return spriteH(this.data); }
+
+  jump() {
+    if (!this.jumping) {
+      this.vy = JUMP_VEL;
+      this.jumping = true;
+    }
+  }
+
+  update() {
+    this.tick++;
+    if (this.tick % 6 === 0) this.frame = (this.frame + 1) % 10;
+    this.y += this.vy;
+    this.vy += GRAVITY;
+    if (this.y > this.baseY) {
+      this.y = this.baseY;
+      this.vy = 0;
+      this.jumping = false;
+    }
+  }
+
+  draw() {
+    drawSprite(this.data, this.x, this.y, DINO_COLOR);
+    // eye
+    if (!this.jumping) {
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(this.x + 9*P, this.y + 2*P, P, P);
+    }
+  }
+}
+
+// ── Cactus ──────────────────────────────────────────────────
+const CACTI = [CACTUS_SM, CACTUS_TALL, CACTUS_WIDE];
+
+class Cactus {
+  constructor(speed) {
+    const v = Math.floor(Math.random() * CACTI.length);
+    this.data = CACTI[v];
+    this.x = canvas.width;
+    this.y = GROUND - spriteH(this.data);
+    this.w = spriteW(this.data);
+    this.h = spriteH(this.data);
+    this.speed = speed;
+  }
+
+  update() { this.x -= this.speed; }
+
+  draw() { drawSprite(this.data, this.x, this.y, CACTUS_COLOR); }
+}
+
+// ── Game ────────────────────────────────────────────────────
+let dino, obstacles, score, speed, spawnTimer, running, animId;
+
+function reset() {
+  dino = new Dino();
+  obstacles = [];
+  score = 0;
+  speed = 6;
+  spawnTimer = 100;
+  running = true;
+  overlay.style.display = 'none';
+  hud.textContent = '00000';
+}
+
+function gameOver() {
+  running = false;
+  overlay.style.display = 'flex';
+  finalscore.textContent = 'SCORE: ' + String(Math.floor(score)).padStart(5,'0');
+}
+
+function spawn() {
+  if (spawnTimer <= 0) {
+    obstacles.push(new Cactus(speed));
+    spawnTimer = 50 + Math.random() * 80;
+  }
+  spawnTimer--;
+}
+
+function collide(a, b) {
+  const shrink = 4; // shrink hitbox for fairness
+  return a.x + shrink < b.x + b.w - shrink &&
+         a.x + a.w - shrink > b.x + shrink &&
+         a.y + shrink < b.y + b.h - shrink &&
+         a.y + a.h - shrink > b.y + shrink;
+}
+
+// ── Ground ──────────────────────────────────────────────────
+let groundOffset = 0;
+
+function drawGround() {
+  ctx.save();
+  ctx.strokeStyle = GROUND_COLOR;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, GROUND);
+  ctx.lineTo(canvas.width, GROUND);
+  ctx.stroke();
+
+  // scrolling dots
+  groundOffset = (groundOffset + speed * 0.5) % canvas.width;
+  ctx.fillStyle = GROUND_COLOR;
+  const dots = [
+    [  0, 8], [ 17, 14], [ 33, 10], [ 50, 6], [ 70, 13],
+    [ 90, 9], [110, 7], [130, 12], [150, 15], [175, 8],
+    [200,11], [225,13], [255,7], [280,10], [310,14],
+    [340,6], [370,9], [400,12], [430,8], [465,11]
+  ];
+  for (const d of dots) {
+    const x = (d[0] + groundOffset) % canvas.width;
+    ctx.fillRect(x, GROUND + d[1], P/2, P/2);
+  }
+  ctx.restore();
+}
+
+// ── Cloud ───────────────────────────────────────────────────
+class Cloud {
+  constructor() { this.x = canvas.width; this.y = 20 + Math.random() * 40; }
+  update(s) { this.x -= s * 0.3; }
+  draw() {
+    ctx.fillStyle = '#ddd';
+    const r = 4*P;
+    ctx.fillRect(this.x, this.y, r*2, r);
+    ctx.fillRect(this.x + r*0.5, this.y - r*0.5, r*1.5, r);
+    ctx.fillRect(this.x - r*0.3, this.y + r*0.3, r*2.5, r*0.4);
+  }
+}
+let clouds = [];
+
+// ── Loop ────────────────────────────────────────────────────
+function loop() {
+  if (!running) { return; }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // clouds
+  for (let i = clouds.length - 1; i >= 0; i--) {
+    clouds[i].update(speed);
+    clouds[i].draw();
+    if (clouds[i].x + 50 < 0) clouds.splice(i, 1);
+  }
+  if (Math.random() < 0.002) clouds.push(new Cloud());
+
+  // update
+  dino.update();
+  spawn();
+
+  speed = Math.min(16, speed + 0.0015);
+  score += 0.12;
+  hud.textContent = String(Math.floor(score)).padStart(5,'0');
+
+  // obstacles
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    obstacles[i].update();
+    obstacles[i].draw();
+    // collision
+    if (collide(dino, obstacles[i]) || collide(obstacles[i], dino)) {
+      gameOver();
+    }
+    if (obstacles[i].x + obstacles[i].w < -10) obstacles.splice(i, 1);
+  }
+
+  drawGround();
+  dino.draw();
+
+  animId = requestAnimationFrame(loop);
+}
+
+// ── Controls ────────────────────────────────────────────────
+function onAction() {
+  if (running) {
+    dino.jump();
+  } else {
+    reset(); loop();
+  }
+}
+
+window.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); onAction(); }
+});
+restartBtn.addEventListener('click', () => { reset(); loop(); });
+canvas.addEventListener('click', onAction);
+
+// prevent page scroll on space
+window.addEventListener('keyup', e => { if (e.code === 'Space') e.preventDefault(); });
+
+// ── Init ────────────────────────────────────────────────────
+// set up initial state but keep running=false so first space starts the loop
+dino = new Dino();
+obstacles = [];
+score = 0;
+speed = 6;
+spawnTimer = 100;
+running = false;
+overlay.style.display = 'none';
+hud.textContent = '00000';
+// splash text
+ctx.fillStyle = '#bbb';
+ctx.font = '11px pixel,monospace';
+ctx.textAlign = 'center';
+ctx.fillText('SPACE TO START', canvas.width/2, GROUND + 35);
+</script>
+</body>
+</html>

@@ -91,8 +91,6 @@ Press enter or click to view image in full size
 
 ![img](./assets/20260509-002.png)
 
-devstral-small-2 on Macbook Pro M1
-
 Or manual setup — add to `~/.zshrc` or `~/.bashrc`:
 
 ```
@@ -111,8 +109,6 @@ claude --model devstral-small-2
 Press enter or click to view image in full size
 
 ![img](./assets/20260509-003.png)
-
-glm-4.7-flash:bf16 on Nvidia DGX Spark
 
 **That’s it!** You’re running Claude Code locally.
 

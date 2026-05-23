@@ -69,11 +69,11 @@ Install `OpenCode` and/or `Claude Code` as vibe coding agent.
 ```shell
 # Install OpenCode
 curl -fsSL https://opencode.ai/install | bash
-## npm i -g opencode-ai
+## Or using npm
+npm i -g opencode-ai
 
-# Install Claude Code
-curl -fsSL https://claude.ai/install | bash
-## npm i -g @anthropic-ai/claude-code
+# Install OpenCode in macOS
+brew install anomalyco/tap/opencode
 ```
 
 
@@ -167,7 +167,7 @@ ollama pull qwen3.6:27b-coding-nvfp4	## Size:20GB, Context:256k, Input:text
 
 ### 7- Run local model against vibe coding agent
 
-Rub `gemma4` model against `Claude Code` in VS Code: 
+Rub `gemma4` model against `OpenCode` in VS Code: 
 
 Launch VS-Code, create/select an empty folder, open Terminal and type the below to launch `OpenCode`:
 
@@ -179,7 +179,60 @@ At `Security Guide`, select `1. Yes, I trust folder`.
 
 
 
-### 8- Build Your Dream Apps
+### 8- Configure `config.json` file for Local Models
+
+```shell
+nano ~/.config/opencode/config.json
+```
+
+The contents belike:
+
+```shell
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@api-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder-next:cloud": {
+            "name": "Qwen3-coder Next Cloud"
+          }
+      }
+    }
+  }
+}
+```
+
+Then, go to Project folder and run:
+
+```shell
+## Run:
+opencode
+```
+
+The default model shall be loaded, but feel free to change the model to your default one:
+
+```shell
+/models
+```
+
+there are quite a few FREE models from `OpenCode Zen`: 
+
+```text
+- Big Pickle
+- Nemotron 3 Super Free
+- DeepSeek V4 Flash Free
+```
+
+but change the model to "**qwen3-coder-next:cloud**".
+
+
+
+### 9- Build Your Dream Apps
 
 Build a few simple Games with example promptings:
 

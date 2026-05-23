@@ -151,7 +151,7 @@ Please note, when writing the prompt, better to write all requirements in one sh
 For instance, I typed in:
 
 ```text
-Please use HTML_JavaScript to make Chrome-based offline dinosaur game in a single index.html file, Using space bar to jump, on a land with cactus barrier; starting from right side; It changes to Game-over if hitting a barrier, after which, score shall be displayed, plus a Restart button pops up; The display shall be in beautiful pixels.
+Please use HTML + JavaScript to make Chrome-based offline dinosaur game in a single index.html file, Using space bar to jump, on a land with cactus barriers; starting from left side; It changes to Game-over if hitting a barrier, after which, score shall be displayed, plus a Restart button pops up; The display shall be in beautiful pixels.
 ```
 
 I renamed the `intex.html` to `./claudeDemo/dino-game-gemma4.html`, it's not playable, to be honest.
