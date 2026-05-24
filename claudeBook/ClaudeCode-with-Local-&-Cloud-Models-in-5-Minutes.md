@@ -77,8 +77,6 @@ Press enter or click to view image in full size
 
 ![img](./assets/20260509-001.png)
 
-devstral-small-2 and glm-4.7-flash:bf16
-
 ### Step 3: Connect to Claude Code
 
 The easy way:

@@ -77,16 +77,15 @@ llmfit
 For my powerful Dell Precision 7820 Tower, with 256Gb RAM, 8TB HDD, NVIDIA Quadro P5000 (16GB VRAM) x2, I am very comfortable to pick up some super powerful LLM models.
 
 ```shell
-# Qwen Family
-Qwen3.5-35B-A3B
-Qwen3.6-27B
-Qwen3-14B
-Qwen2.5-Coder-14B-Instruct
 # Google family
-gemma-4-31B-it
-gemma-4-E4B-it
-# Microsoft
-phi-4-reasoning
+ollama pull gemma4:e4b
+ollama pull gemma4:26b
+ollama pull gemma4:31b-cloud
+# Qwen Family
+ollama pull qwen3:14b
+ollama pull qwen3-coder:30b
+ollama pull qwen3-coder:480b-cloud
+ollama pull qwen3-coder-next:cloud
 ```
 
 Then let's give a shot, by the way - the format on `ollama` site slightly differ from `llmfit`'s output
