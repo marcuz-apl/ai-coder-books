@@ -1,6 +1,8 @@
-# Blow Your Mind: OpenCode with Ollama+Gemma4 in WSL2
+# OpenCode with Ollama Local Models in Linux
 
  
+
+[TOC]
 
 ## Mindset
 
@@ -25,7 +27,7 @@
 
 
 
-1- Enable `Windows Subsystems for Linux` and Install WSL2 distro, say Ubuntu24.04
+1- Preferably install WSL2 distro, say Ubuntu24.04
 
 ```shell
 # Check out what WSL instance can be installed
@@ -78,14 +80,17 @@ For my powerful Dell Precision 7820 Tower, with 256Gb RAM, 8TB HDD, NVIDIA Quadr
 
 ```shell
 # Google family
-ollama pull gemma4:e4b
-ollama pull gemma4:26b
-ollama pull gemma4:31b-cloud
+ollama pull gemma4:e4b				## Size:9.6GB, Context:128k, Input:text,image
+ollama pull gemma4:26b				## Size:17GB, Context:256k, Input:text,image
+ollama pull gemma4:31b				## Size:20GB, Context:256k, Input:text,image
+ollama pull gemma4:31b-cloud		## Size:----, Context:256k, Input:text,image
 # Qwen Family
-ollama pull qwen3:14b
-ollama pull qwen3-coder:30b
-ollama pull qwen3-coder:480b-cloud
-ollama pull qwen3-coder-next:cloud
+ollama pull qwen3:14b				## Size:13GB, Context:256k, Input:text
+ollama pull qwen3-coder:30b			## Size:19GB, Context:256k, Input:text
+ollama pull qwen3-coder:480b-cloud	## Size:----, Context:256k, Input:text
+ollama pull qwen3-coder-next:cloud	## Size:----, Context:256k, Input:text
+# Deepseek Family
+ollama pull deepseek-v4-flash:cloud	## Size:----, Context:1M, Input:text
 ```
 
 Then let's give a shot, by the way - the format on `ollama` site slightly differ from `llmfit`'s output
@@ -115,6 +120,61 @@ opencode
 ```shell
 ollama launch opencode --model gemma4:31b-cloud
 ```
+
+
+
+6- Configure `config.json` file for hosting local models
+
+Give a shot:
+
+```shell
+nano ~/.config/opencode/config.json
+```
+
+The contents belike:
+
+```shell
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@api-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder-next:cloud": {
+            "name": "Qwen3-coder Next Cloud"
+          }
+      }
+    }
+  }
+}
+```
+
+Then, go to Project folder and run:
+
+```shell
+## Run:
+opencode
+```
+
+The default model shall be loaded, but feel free to change the model to your default one:
+
+```shell
+/models
+```
+
+there are quite a few FREE models from `OpenCode Zen`: 
+
+```text
+- Big Pickle
+- Nemotron 3 Super Free
+- DeepSeek V4 Flash Free
+```
+
+but change the model to "**qwen3-coder-next:cloud**".
 
 
 

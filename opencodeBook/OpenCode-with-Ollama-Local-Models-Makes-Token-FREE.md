@@ -1,4 +1,4 @@
-# OpenCode with Ollama+Gemma4 Makes Token-Free
+# OpenCode with Ollama Local Models Makes Token FREE
 
  
 
@@ -6,8 +6,8 @@
 
 ## Mindset
 
-- Have to work in Windows env daily, and
-- Love Vibe Coding within Visual Studio Code, and
+- Works in Windows env or Linux/macOS, and
+- Love Vibe Coding within Visual Studio Code or just a CLI, and
 - Don't wanna go dual-booting the workstation, and
 - Wanna cut cost of tokens to Zero
 
@@ -15,10 +15,12 @@
 
 ## Approaches
 
-- Install `VSCode` as Easy-to-Handle IDE
-- Install `Claude Code` to manage Vibe coding process
+- Have Linux or WSL Ubuntu 24 inside Windows
+- (Optionally) Install `VSCode` or `Cursor` as Easy-to-Handle IDE
 - Install `ollama` - taking care of local LLM management
-- Grab `Gemma4` LLM Model to make token-free coding
+- (Optionally) Install `llmfit` to filter the model my workstation can handle
+- Grab `LLM` Models to make token-free coding
+- Install `OpenCode` to manage Vibe coding process
 
 
 
@@ -62,23 +64,7 @@ dnf install git
 
 
 
-### 3- Install Vibe Coding Agents
-
-Install `OpenCode` and/or `Claude Code` as vibe coding agent.
-
-```shell
-# Install OpenCode
-curl -fsSL https://opencode.ai/install | bash
-## Or using npm
-npm i -g opencode-ai
-
-# Install OpenCode in macOS
-brew install anomalyco/tap/opencode
-```
-
-
-
-### 4- Install `Ollama`
+### 3- Install `Ollama`
 
 ```shell
 # macOS/Linux
@@ -96,7 +82,7 @@ ollama -v
 
 
 
-### 5- Install `llmfit` 
+### 4- Install `llmfit` 
 
 very simple process as below:
 
@@ -127,21 +113,23 @@ phi-4-reasoning
 
 
 
-## 6- LLM Naming Convention: `ollama` vs.` llmfit`
+## 5- LLM Naming Convention: `ollama` vs.` llmfit`
 
 By the way - the format on `ollama` site slightly differ from `llmfit`'s output
 
 ```shell
-# Gemma Family
+# Google Family
 ollama pull gemma4:e4b				## Size:9.6GB, Context:128k, Input:text,image
+ollama pull gemma4:26b				## Size:17GB, Context:256k, Input:text,image
 ollama pull gemma4:31b				## Size:20GB, Context:256k, Input:text,image
 ollama pull gemma4:31b-cloud		## Size:----, Context:256k, Input:text,image
 
 # Qwen Family
-ollama pull qwen3:14b
+ollama pull qwen3:14b				## Size:13GB, Context:256k, Input:text
 ollama pull qwen3-coder:30b			## Size:19GB, Context:256k, Input:text
 ollama pull qwen3-coder:480b-cloud	## Size:----, Context:256k, Input:text
 ollama pull qwen3-coder-next:cloud	## Size:----, Context:256k, Input:text
+
 ollama pull qwen3-vl:8b				## Size:6.1GB, Context:256k, Input:text,image
 ollama pull qwen3-vl:30b			## Size:20GB, Context:256k, Input:text,image
 ollama pull qwen3-vl:235b-cloud		## Size:----, Context:256k, Input:text,image
@@ -151,9 +139,12 @@ ollama pull qwen3.5:27b				## Size:17GB, Context:256k, Input:text,image
 ollama pull qwen3.5:cloud			## Size:----, Context:256k, Input:text,image
 
 ollama pull qwen3.6:27b				## Size:17GB, Context:256k, Input:text,image
+ollama pull qwen3.6:35b				## Size:24GB, Context:256k, Input:text,image
 
+# Deepseek Family
+ollama pull deepseek-coder-v2:16b	## Size:8.9GB, Context:160K, Input:text
 ollama pull deepseek-v4-flash:cloud	## Size:----, Context:1M, Input:text
-
+ollama pull deepseek-v4-pro:cloud	## Size:----, Context:1M, Input:text
 # macOS Apple Silicon
 ollama pull qwen3.6:27b-coding-nvfp4	## Size:20GB, Context:256k, Input:text
 ## Optimal Model size for MBA 20026 (M5 chip + 16GB RAM)
@@ -161,6 +152,22 @@ ollama pull qwen3.6:27b-coding-nvfp4	## Size:20GB, Context:256k, Input:text
 ## llama3:8b, qwen3:8b, qwen3.5:9b
 #  Maximum Potential: 13B parameter models:
 ## gemma3:12b, mistral:7b
+```
+
+
+
+### 6- Install Vibe Coding Agent
+
+Install `OpenCode` as vibe coding agent.
+
+```shell
+# Install OpenCode
+curl -fsSL https://opencode.ai/install | bash
+## Or using npm
+npm i -g opencode-ai
+
+# Install OpenCode in macOS
+brew install anomalyco/tap/opencode
 ```
 
 
@@ -179,7 +186,9 @@ At `Security Guide`, select `1. Yes, I trust folder`.
 
 
 
-### 8- Configure `config.json` file for Local Models
+### 8- Configure `config.json` file for hosting the local models
+
+Give a shot:
 
 ```shell
 nano ~/.config/opencode/config.json

@@ -72,9 +72,11 @@ Instead of using one model for everything, most professional setups—such as th
 
 ## OpenCode
 
-1- [OpenCode with Ollama+Gemma4 in WSL2](./opencodeBook/OpenCode-with-Ollama+Gemma4-in-WSL2.md)
+1- [OpenCode with Ollama Local Models in Linux](./opencodeBook/OpenCode-with-Ollama-Local-Models-in-Linux.md)
 
-2- [ OpenCode with Ollama+Gemma4 Makes Token-free](./opencodeBook/OpenCode-with-Ollama+Gemma4-Makes-Token-free.md)
+2- [ OpenCode with Ollama Local Models Makes Token FREE](./opencodeBook/OpenCode-with-Ollama-Local-Models-Makes-Token-FREE.md)
+
+3- [OpeCode Operations Guide](./opencodeBook/OpenCode-Operations-Guide.md)
 
 
 
