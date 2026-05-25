@@ -128,7 +128,7 @@ ollama launch opencode --model gemma4:31b-cloud
 Give a shot:
 
 ```shell
-nano ~/.config/opencode/config.json
+nano ~/.config/opencode/opencode.json
 ```
 
 The contents belike:

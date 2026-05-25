@@ -156,7 +156,7 @@ ollama pull qwen3.6:27b-coding-nvfp4	## Size:20GB, Context:256k, Input:text
 
 
 
-### 6- Install Vibe Coding Agent
+### 6- Install Vibe Coding Agent: OpenCode
 
 Install `OpenCode` as vibe coding agent.
 
