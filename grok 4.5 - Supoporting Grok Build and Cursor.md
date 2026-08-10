@@ -1,0 +1,182 @@
+# Grok-4.5 Released with Grok Build
+
+A powerful coding agent and CLI for complex coding work, now powered by Grok 4.5 — our new model.
+
+```shell
+# Windows - PowerShell
+irm https://x.ai/cli/install.ps1 | iex
+# macOS / Linux / WSL
+curl -fsSL https://x.ai/cli/install.sh | bash
+```
+
+
+
+**Read Docs**: [Grok Build | SpaceXAI Docs](https://docs.x.ai/build/overview)
+
+**Meet grok-4.5**: [Introducing Grok 4.5 | SpaceXAI](https://x.ai/news/grok-4-5)
+
+
+
+### Skills
+
+Grok Build adapts to your workflows and preferences with skills.
+
+- AGENTS.md, plugins, hooks, and MCP servers all work out of the box
+- Auto-invoked when a task matches, or called by name
+- Capture any session as a new skill with /skillify
+
+
+
+### Plan
+
+The plan viewer makes it easy to architect complex projects.
+
+- Start in plan mode for complex tasks — every edit is blocked until you approve
+- Approve the plan, comment on individual steps, or rewrite it entirely
+- Every approved change shows up as a clean diff
+
+
+
+### Plugins
+
+Marketplaces help you share capabilities across your team.
+
+- Bundle skills, agents, hooks, and MCP servers behind one install
+- Marketplace install, or self-host from any git repo
+- Linear, Sentry, Postgres, browsers — anything with MCP
+
+
+
+### Q&A
+
+Grok Build asks the right questions to nail the details.
+
+- Ambiguous tasks get a quick multiple-choice
+- Pick a design direction, a framework, or a schema
+- Answers flow straight into the plan
+
+
+
+### Subagents
+
+Subagents run in parallel to research, build, and review at once.
+
+- Grok Build delegates larger tasks to specialized subagents
+- Each child runs in parallel with its own context window
+- Deep worktree support — launch subagents in their own worktrees
+
+
+
+
+
+## Everything you need to ship
+
+One tool for the entire development workflow — plan, build, test, and deploy.
+
+
+
+Plan mode
+
+Propose a structured approach before writing code
+
+
+
+Subagents
+
+Spawn parallel agents for testing and research
+
+
+
+Skills
+
+Turn workflows into reusable slash commands
+
+
+
+Hooks
+
+Run scripts on file edits and tool calls
+
+
+
+MCP servers
+
+Connect to Linear, Sentry, Grafana, and more
+
+
+
+AGENTS.md
+
+Set conventions and rules per directory
+
+
+
+Memory
+
+Persist decisions and context across sessions
+
+
+
+Code search
+
+Grep and navigate large codebases fast
+
+
+
+Multi-file edits
+
+Refactor across files with search-and-replace
+
+
+
+Git integration
+
+Stage, commit, push, and manage branches
+
+
+
+Deep reasoning
+
+Step-by-step thinking for hard problems
+
+
+
+Web search
+
+Look up docs and packages from the terminal
+
+
+
+Terminal execution
+
+Run builds and tests with live streaming
+
+
+
+Headless mode
+
+Script Grok Build in CI/CD pipelines
+
+
+
+Code review
+
+Line-by-line feedback before opening a PR
+
+
+
+Sandboxed execution
+
+Run untrusted code in isolated environments
+
+
+
+Background tasks
+
+Monitor long-running builds and processes
+
+
+
+Theming
+
+Customize colors, fonts, and appearance
