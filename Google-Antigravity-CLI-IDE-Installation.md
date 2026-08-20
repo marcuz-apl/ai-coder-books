@@ -1,4 +1,9 @@
-# Part 1 - Antigravity CLI
+# Google Antigravity CLI, 2.0, and IDE
+
+
+
+## Part 1 - Antigravity CLI
+
 Work with Antigravity directly in your codebase. Build, debug, and ship from your terminal. Describe what you need, and Antigravity handles the rest.
 
 ### macOS | Linux
@@ -16,11 +21,11 @@ curl -fsSL https://antigravity.google/cli/install.cmd -o install.cmd && install.
 
 
 
-# Part 2 - Antigravity 2.0
+## Part 2 - Antigravity 2.0
 
 
 
-### Deb-based Linux distributions (eg. Debian, Ubuntu)
+### Deb-based Linux distributions (e.g. Debian, Ubuntu)
 
 #### 1. Add the repository to sources.list.d
 
@@ -74,7 +79,7 @@ sudo dnf install antigravity
 
 
 
-# Part 3 - Antigravity IDE
+## Part 3 - Antigravity IDE
 
 
 
@@ -100,10 +105,10 @@ source ~/.profile
 antigravity-ide
 ```
 
-Then, Add Desktop shortcut for PhpStorm by creating/editing a file:
+Then, Add Desktop shortcut for Agy IDE by creating/editing a file:
 
 ```shell
-sudo nano /usr/share/applications/antigravity-ide.desktop
+sudo nano /usr/share/applications/agy-ide.desktop
 ```
 
 with content as below:
@@ -111,7 +116,7 @@ with content as below:
 ```text
 [Desktop Entry]
 Type=Application
-Name=Antigravity IDE
+Name=Agy IDE
 Comment=Launch Google Antigravity IDE application
 Exec=/opt/antigravity-ide/bin/antigravity-ide %U
 Icon=/opt/antigravity-ide/resources/app/resources/linux/code.png
@@ -119,7 +124,7 @@ Terminal=false
 Categories=Programming;
 ```
 
-Then make it executeable:
+Then make it executable:
 
 ```shell
 sudo chmod +x /usr/share/applications/antigravity-ide.desktop

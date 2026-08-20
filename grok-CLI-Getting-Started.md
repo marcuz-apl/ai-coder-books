@@ -187,4 +187,97 @@ const { text } = await generateText({
 console.log(text);
 ```
 
+### 3- Uninstall grok
 
+#### Method 1: Using the CLI's Built-in Command (Recommended)
+
+```shell 
+## Method 1: Using the CLI's Built-in Command (Recommended)
+grok uninstall
+```
+
+```text
+Flags:
+	--keep-config: Keeps your user configuration, skills, and memory in ~/.grok while removing the binaries.
+	--dry-run: Preview what files will be removed without deleting anything.
+```
+
+#### Method 2: Manual Removal (macOS / Linux / WSL)
+
+If `grok uninstall` isn't supported by your version or you installed via `curl | bash`, remove the binaries and directory manually:
+
+```shell
+## 1- Remove the binaries/symlinks:
+sudo rm -f /usr/local/bin/grok /usr/local/bin/agent
+```
+
+*(If binaries were placed in your user PATH instead: `rm -f ~/.grok/bin/grok ~/.grok/bin/agent`)*
+
+```shell
+## 2- Remove configuration files & cached data:
+rm -rf ~/.grok
+```
+
+```shell
+## 3- Clean shell profiles (Optional):
+## Open ~/.zshrc, ~/.bashrc, or ~/.bash_profile and remove any lines containing # grok or PATH exports pointing to ~/.grok/bin.
+```
+
+#### Method 3: npm / Node.js
+
+If you installed a Node-based wrapper or global package via npm:
+
+```shell
+npm uninstall -g grok-cli
+## if installed via community packages
+npm uninstall -g grok-cli-hurry-mode
+```
+
+
+
+#### Special: Uninstall in PowerShell
+
+##### Step 1: Remove the CLI Binaries
+
+If installed via PowerShell / Windows script or manual setup, delete the binary executable files located in your user profile:
+
+PowerShell
+
+```powershell
+Remove-Item -Path "$env:USERPROFILE\.grok\bin\*" -Force -ErrorAction SilentlyContinue
+```
+
+*(Note: If installed globally via **npm**, uninstall it using `npm uninstall -g grok-cli` instead).*
+
+------
+
+##### Step 2: Delete Configuration Files & Local Data
+
+Remove your cached data, configuration settings, and local profile directory:
+
+PowerShell
+
+```powershell
+Remove-Item -Path "$env:USERPROFILE\.grok" -Recurse -Force
+```
+
+------
+
+##### Step 3: Remove PATH Environment Variables
+
+If the installer added Grok to your environment PATH, remove the entry so PowerShell stops recognizing the `grok` command:
+
+PowerShell
+
+```powershell
+# Get current User PATH
+$UserPath = [Environment]::GetEnvironmentVariable("Path", "User")
+
+# Filter out Grok paths
+$NewPath = ($UserPath -split ';' | Where-Object { $_ -notlike "*\.grok*" }) -join ';'
+
+# Save updated PATH back to User Environment Variables
+[Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
+```
+
+After running these steps, restart your PowerShell session to apply the PATH updates.
